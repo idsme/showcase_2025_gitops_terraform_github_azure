@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ids Achterhof - Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer>
+        function switchTab(tabId) {
+            try {
+                console.log('Switching to tab:', tabId);
+                // Hide all tab contents
+                const tabContents = document.querySelectorAll('.tab-content');
+                console.log('Found tab contents:', tabContents.length);
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+
+                // Show selected tab content
+                const selectedTab = document.getElementById(tabId);
+                console.log('Selected tab element:', selectedTab);
+                if (selectedTab) {
+                    selectedTab.classList.remove('hidden');
+                } else {
+                    console.error('Tab content not found for:', tabId);
+                }
+
+                // Update active tab button
+                const tabButtons = document.querySelectorAll('.tab-button');
+                tabButtons.forEach(button => {
+                    if (button.getAttribute('data-tab') === tabId) {
+                        button.classList.add('border-b-2', 'border-black');
+                        button.classList.remove('text-gray-600');
+                    } else {
+                        button.classList.remove('border-b-2', 'border-black');
+                        button.classList.add('text-gray-600');
+                    }
+                });
+            } catch (error) {
+                console.error('Error switching tabs:', error);
+            }
+        }
+
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('DOM loaded, initializing tabs');
+            // Initialize with home tab active
+            switchTab('home');
+        });
+    </script>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Header/Banner Section -->
+    <div class="w-full h-32 bg-sky-100">
+        <div class="max-w-6xl mx-auto px-4 h-full flex items-center">
+            <div class="flex items-center space-x-4">
+                <img src="https://cdn.pixabay.com/photo/2018/04/14/19/08/coding-3319043_1280.jpg" alt="Profile Picture"
+                    class="w-20 h-20 rounded-full border-4 border-white">
+                <div>
+                    <h1 class="text-2xl font-bold">Ids Achterhof</h1>
+                    <p class="text-gray-600">ACME Labs bv</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <!-- Navigation -->
+        <nav class="flex border-b mb-8">
+            <button onclick="switchTab('home')" class="px-6 py-2 font-medium tab-button" data-tab="home">Home</button>
+            <button onclick="switchTab('projects')" class="px-6 py-2 font-medium tab-button"
+                data-tab="projects">Projects</button>
+            <button onclick="switchTab('about')" class="px-6 py-2 font-medium tab-button"
+                data-tab="about">About</button>
+            <button onclick="switchTab('contact')" class="px-6 py-2 font-medium tab-button"
+                data-tab="contact">Contact</button>
+        </nav>
+
+        <!-- Replace the existing content with tabbed content -->
+        <div id="home" class="tab-content">
+            <!-- Featured Section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="col-span-2">
+                    <div class="bg-white rounded-lg shadow overflow-hidden">
+                        <img src="https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_1280.jpg"
+                            alt="Featured Image" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold">Featured Project</h3>
+                            <p class="text-gray-600">Latest work and achievements</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-4">
+                    <h2 class="font-semibold mb-4">About Me</h2>
+                    <p class="text-gray-600">Software developer passionate about creating elegant solutions to complex
+                        problems.</p>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <h2 class="text-xl font-bold mb-4">Recent Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Project Card 1 -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <img src="https://cdn.pixabay.com/photo/2016/12/28/09/36/web-1935737_1280.png" alt="Project 1"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">Project 1</h3>
+                        <p class="text-gray-600 text-sm">Description of project 1</p>
+                    </div>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <img src="https://cdn.pixabay.com/photo/2017/07/31/11/31/laptop-2557468_1280.jpg" alt="Project 2"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">Project 2</h3>
+                        <p class="text-gray-600 text-sm">Description of project 2</p>
+                    </div>
+                </div>
+                <!-- Project Card 3 -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <img src="https://cdn.pixabay.com/photo/2018/05/08/08/44/artificial-intelligence-3382507_1280.jpg"
+                        alt="Project 3" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">Project 3</h3>
+                        <p class="text-gray-600 text-sm">Description of project 3</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="projects" class="tab-content hidden">
+            <h2 class="text-xl font-bold mb-6">All Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Cloud Infrastructure Project -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <img src="https://cdn.pixabay.com/photo/2018/06/27/07/45/cloud-computing-3500665_1280.jpg"
+                        alt="Cloud Infrastructure" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">Cloud Infrastructure Automation</h3>
+                        <p class="text-gray-600 text-sm">AWS infrastructure automation using Terraform and Ansible</p>
+                        <div class="mt-2 flex gap-2">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-md text-xs">AWS</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-600 rounded-md text-xs">Terraform</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Microservices Application -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <img src="https://cdn.pixabay.com/photo/2018/05/16/18/10/cloud-3406627_1280.jpg" alt="Microservices"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">E-commerce Microservices</h3>
+                        <p class="text-gray-600 text-sm">Distributed e-commerce platform using microservices
+                            architecture</p>
+                        <div class="mt-2 flex gap-2">
+                            <span class="px-2 py-1 bg-green-100 text-green-600 rounded-md text-xs">Spring Boot</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-md text-xs">Docker</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ML Project -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <img src="https://cdn.pixabay.com/photo/2019/04/16/11/14/ai-4130810_1280.jpg" alt="Machine Learning"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">AI Image Recognition</h3>
+                        <p class="text-gray-600 text-sm">Deep learning model for real-time image classification</p>
+                        <div class="mt-2 flex gap-2">
+                            <span class="px-2 py-1 bg-yellow-100 text-yellow-600 rounded-md text-xs">Python</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-md text-xs">TensorFlow</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile App -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <img src="https://cdn.pixabay.com/photo/2017/01/29/13/21/mobile-devices-2017978_1280.png"
+                        alt="Mobile App" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">Fitness Tracking App</h3>
+                        <p class="text-gray-600 text-sm">Cross-platform mobile app for fitness tracking</p>
+                        <div class="mt-2 flex gap-2">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-md text-xs">React Native</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded-md text-xs">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Application -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <img src="https://cdn.pixabay.com/photo/2016/11/30/20/58/web-1873373_1280.png" alt="Web App"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">Project Management Dashboard</h3>
+                        <p class="text-gray-600 text-sm">Real-time project management tool with analytics</p>
+                        <div class="mt-2 flex gap-2">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-md text-xs">React</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-600 rounded-md text-xs">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DevOps Project -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <img src="https://cdn.pixabay.com/photo/2018/05/08/08/44/artificial-intelligence-3382507_1280.jpg"
+                        alt="DevOps" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">CI/CD Pipeline Automation</h3>
+                        <p class="text-gray-600 text-sm">Automated deployment pipeline using GitHub Actions</p>
+                        <div class="mt-2 flex gap-2">
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-md text-xs">GitHub Actions</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-md text-xs">Kubernetes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blockchain Project -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <img src="https://cdn.pixabay.com/photo/2018/01/17/20/22/blockchain-3088872_1280.jpg"
+                        alt="Blockchain" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">Smart Contract Platform</h3>
+                        <p class="text-gray-600 text-sm">Ethereum-based smart contract development platform</p>
+                        <div class="mt-2 flex gap-2">
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded-md text-xs">Solidity</span>
+                            <span class="px-2 py-1 bg-yellow-100 text-yellow-600 rounded-md text-xs">Web3.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Analytics -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <img src="https://cdn.pixabay.com/photo/2018/09/18/11/19/artificial-intelligence-3685928_1280.png"
+                        alt="Data Analytics" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">Big Data Analytics Platform</h3>
+                        <p class="text-gray-600 text-sm">Real-time data processing and visualization platform</p>
+                        <div class="mt-2 flex gap-2">
+                            <span class="px-2 py-1 bg-red-100 text-red-600 rounded-md text-xs">Apache Spark</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-md text-xs">Tableau</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Project -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <img src="https://cdn.pixabay.com/photo/2017/11/19/23/56/cyber-security-2964127_1280.jpg"
+                        alt="Security" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">Security Monitoring System</h3>
+                        <p class="text-gray-600 text-sm">Advanced security monitoring and threat detection</p>
+                        <div class="mt-2 flex gap-2">
+                            <span class="px-2 py-1 bg-red-100 text-red-600 rounded-md text-xs">Python</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-600 rounded-md text-xs">ELK Stack</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="about" class="tab-content hidden">
+            <div class="bg-white rounded-lg shadow p-6 max-w-3xl mx-auto">
+                <h2 class="text-xl font-bold mb-4">About Me</h2>
+                <div class="space-y-4">
+                    <p class="text-gray-600">
+                        I'm a passionate software developer with expertise in modern web technologies and cloud
+                        solutions.
+                    </p>
+                    <h3 class="font-semibold">Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">JavaScript</span>
+                        <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">Python</span>
+                        <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">React</span>
+                        <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">Node.js</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact" class="tab-content hidden">
+            <div class="bg-white rounded-lg shadow p-6 max-w-xl mx-auto">
+                <h2 class="text-xl font-bold mb-4">Contact Me</h2>
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                        <input type="text"
+                            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email"
+                            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                        <textarea rows="4"
+                            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-sky-500 text-white py-2 px-4 rounded-lg hover:bg-sky-600 transition-colors">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
