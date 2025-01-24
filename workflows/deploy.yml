@@ -1,0 +1,24 @@
+name: Deploy Static Website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          cli_config_credentials_token: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
